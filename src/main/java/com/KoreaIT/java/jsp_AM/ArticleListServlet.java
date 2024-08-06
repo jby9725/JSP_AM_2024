@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/Article/list")
+@WebServlet("/article/list")
 public class ArticleListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,9 +31,7 @@ public class ArticleListServlet extends HttpServlet {
 		response.getWriter().append("123");
 
 		String url = "jdbc:mysql://localhost:3306/ArticleManager";
-		//String url = "jdbc:mysql://127.0.0.1:3306/ArticleManager?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul";
-
-		
+		//String url = "jdbc:mysql://127.0.0.1:3306/ArticleManager?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul";		
 		System.out.println(url);
 		
 		String user = "root";
@@ -47,7 +45,8 @@ public class ArticleListServlet extends HttpServlet {
 
 			DBUtil dbUtil = new DBUtil(request, response);
 
-			String sql = "SELECT * FROM article";
+//			String sql = "SELECT * FROM article";
+			String sql = "SELECT * FROM article ORDER BY id DESC";
 
 			List<Map<String, Object>> articleRows = dbUtil.selectRows(conn, sql);
 
